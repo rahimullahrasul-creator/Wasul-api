@@ -1,4 +1,4 @@
-# 🏠 Oman Address API
+# 🏠 Wasul API
 
 **Solving Oman's addressing problem - one delivery at a time**
 
