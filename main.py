@@ -15,8 +15,8 @@ import random
 import string
 
 app = FastAPI(
-    title="Oman Address API",
-    description="Address registration and lookup system for Oman",
+    title="Wasul API",
+    description="Deliver to any home in Oman - Address registration and lookup system",
     version="1.0.0"
 )
 
@@ -171,7 +171,7 @@ async def root():
         </style>
     </head>
     <body>
-        <h1>🏠 Oman Address API</h1>
+        <h1>🏠 Wasul API</h1>
         <p>Solving the addressing problem in Oman - one delivery at a time.</p>
         
         <h2>Quick Links</h2>
