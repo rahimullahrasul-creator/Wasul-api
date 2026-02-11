@@ -53,7 +53,7 @@
 
         .nav-logo {
             font-family: 'DM Serif Display', serif;
-            font-size: 1.6rem;
+            font-size: 2.2rem;
             color: var(--orange-500);
             text-decoration: none;
             letter-spacing: -0.5px;
@@ -434,6 +434,188 @@
         .api-preview-body .comment { color: #546e7a; }
         .api-preview-body .key { color: #f78c6c; }
 
+        /* FAQ */
+        .faq-section {
+            padding: 100px 40px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-section .section-header {
+            margin-bottom: 48px;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid var(--sand-200);
+        }
+
+        .faq-question {
+            width: 100%;
+            background: none;
+            border: none;
+            padding: 24px 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            cursor: pointer;
+            text-align: left;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: var(--charcoal);
+            transition: color 0.2s;
+        }
+
+        .faq-question:hover {
+            color: var(--orange-500);
+        }
+
+        .faq-icon {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: var(--sand-100);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-size: 1.1rem;
+            color: var(--muted);
+            transition: all 0.3s;
+        }
+
+        .faq-item.open .faq-icon {
+            background: var(--orange-50);
+            color: var(--orange-500);
+            transform: rotate(45deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+        }
+
+        .faq-item.open .faq-answer {
+            max-height: 200px;
+            padding-bottom: 24px;
+        }
+
+        .faq-answer p {
+            color: var(--slate);
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        /* CONTACT */
+        .contact-section {
+            padding: 100px 40px;
+            background: var(--sand-100);
+        }
+
+        .contact-inner {
+            max-width: 800px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: start;
+        }
+
+        .contact-text .section-label {
+            text-align: left;
+        }
+
+        .contact-text h2 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 2.2rem;
+            letter-spacing: -1px;
+            line-height: 1.15;
+            margin-bottom: 16px;
+        }
+
+        .contact-text p {
+            color: var(--slate);
+            font-size: 1rem;
+            line-height: 1.7;
+            margin-bottom: 32px;
+        }
+
+        .contact-method {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 20px;
+        }
+
+        .contact-method-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            background: var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .contact-method-icon svg {
+            width: 18px;
+            height: 18px;
+            color: var(--orange-500);
+        }
+
+        .contact-method-info {
+            font-size: 0.9rem;
+        }
+
+        .contact-method-label {
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--muted);
+            font-weight: 600;
+            margin-bottom: 2px;
+        }
+
+        .contact-method-value {
+            color: var(--charcoal);
+            font-weight: 600;
+        }
+
+        .contact-method-value a {
+            color: var(--charcoal);
+            text-decoration: none;
+        }
+
+        .contact-method-value a:hover {
+            color: var(--orange-500);
+        }
+
+        .contact-card {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 36px;
+        }
+
+        .contact-card h3 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .contact-card > p {
+            color: var(--slate);
+            font-size: 0.9rem;
+            line-height: 1.6;
+            margin-bottom: 24px;
+        }
+
+        .contact-card .btn-primary {
+            width: 100%;
+            justify-content: center;
+        }
+
         /* CTA */
         .cta-section {
             padding: 100px 40px;
@@ -521,8 +703,17 @@
                 gap: 40px;
             }
 
-            .how-it-works, .cta-section {
+            .how-it-works, .cta-section, .contact-section {
                 padding: 60px 20px;
+            }
+
+            .faq-section {
+                padding: 60px 20px;
+            }
+
+            .contact-inner {
+                grid-template-columns: 1fr;
+                gap: 32px;
             }
 
             .section-header h2, .business-text h2, .cta-section h2 {
@@ -554,6 +745,8 @@
         <div class="nav-links">
             <a href="#how-it-works">How It Works</a>
             <a href="#for-business">For Business</a>
+            <a href="#faq">FAQ</a>
+            <a href="#contact">Contact</a>
             <a href="register.html" class="nav-cta">Register Your Home</a>
         </div>
     </nav>
@@ -643,7 +836,7 @@
                     <span>Delivery verification to build address reliability</span>
                 </li>
             </ul>
-            <a href="https://oman-address-api.onrender.com/docs" class="btn-primary">View API Documentation</a>
+            <a href="#contact" class="btn-primary">Get Started as a Partner</a>
         </div>
         <div class="api-preview">
             <div class="api-preview-header">
@@ -666,17 +859,110 @@
         </div>
     </section>
 
+    <section class="faq-section" id="faq">
+        <div class="section-header">
+            <div class="section-label">Frequently Asked Questions</div>
+            <h2>Everything you need to know</h2>
+        </div>
+        <div class="faq-item">
+            <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+                <span>Is Wasul free for residents?</span>
+                <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+                <p>Yes. Registering your home address and receiving your Wasul code is completely free. There are no fees for residents — you simply register once and use your code whenever you order.</p>
+            </div>
+        </div>
+        <div class="faq-item">
+            <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+                <span>How is my location data kept safe?</span>
+                <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+                <p>Your GPS coordinates are only shared with delivery partners at the time of a delivery. We do not sell your data, and your exact location is never publicly visible. Only the driver delivering to you can see your address details.</p>
+            </div>
+        </div>
+        <div class="faq-item">
+            <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+                <span>How do delivery drivers find my home?</span>
+                <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+                <p>When you place an order, the restaurant or delivery service looks up your Wasul code and gets your exact GPS location plus any delivery instructions you provided. The driver gets a direct Google Maps link to navigate to your door.</p>
+            </div>
+        </div>
+        <div class="faq-item">
+            <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+                <span>What does it cost for businesses?</span>
+                <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+                <p>We offer flexible pricing for delivery partners and restaurants. Reach out to our team to discuss a plan that fits your delivery volume. We also offer free pilot programs for early partners.</p>
+            </div>
+        </div>
+        <div class="faq-item">
+            <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+                <span>Which cities does Wasul cover?</span>
+                <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+                <p>We currently support addresses in Muscat, Salalah, Sohar, and Nizwa. We're expanding to more areas across Oman — register your address even if your area isn't fully covered yet, and you'll be ready when we arrive.</p>
+            </div>
+        </div>
+        <div class="faq-item">
+            <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+                <span>Can I update my address or delivery instructions?</span>
+                <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+                <p>Yes. If you move or need to update your delivery instructions, contact our team and we'll update your record while keeping your same Wasul code.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact-section" id="contact">
+        <div class="contact-inner">
+            <div class="contact-text">
+                <div class="section-label">Get in Touch</div>
+                <h2>Let's bring delivery to your customers</h2>
+                <p>Whether you're a restaurant owner, delivery platform, or e-commerce business — we'd love to hear from you. Reach out to discuss partnership or ask any questions.</p>
+                <div class="contact-method">
+                    <div class="contact-method-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                    </div>
+                    <div class="contact-method-info">
+                        <div class="contact-method-label">Email</div>
+                        <div class="contact-method-value"><a href="mailto:rahimullahrasul@gmail.com">rahimullahrasul@gmail.com</a></div>
+                    </div>
+                </div>
+                <div class="contact-method">
+                    <div class="contact-method-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                    </div>
+                    <div class="contact-method-info">
+                        <div class="contact-method-label">Based In</div>
+                        <div class="contact-method-value">Dallas, TX &middot; Serving Oman</div>
+                    </div>
+                </div>
+            </div>
+            <div class="contact-card">
+                <h3>Partner with Wasul</h3>
+                <p>Join our network of delivery partners and start reaching customers who were previously undeliverable. We offer free pilots for early partners.</p>
+                <a href="mailto:rahimullahrasul@gmail.com?subject=Wasul%20Partnership%20Inquiry" class="btn-primary">Contact Sales</a>
+            </div>
+        </div>
+    </section>
+
     <section class="cta-section">
         <h2>Ready to get your address?</h2>
         <p>It takes less than a minute. Register your home and start receiving deliveries.</p>
         <div class="cta-buttons">
             <a href="register.html" class="btn-primary">Register Now</a>
-            <a href="https://oman-address-api.onrender.com/docs" class="btn-secondary">API Docs</a>
         </div>
     </section>
 
     <footer>
-        <p>Wasul &mdash; Bringing delivery to every home in Oman &nbsp;&middot;&nbsp; <a href="https://oman-address-api.onrender.com/docs">API</a> &nbsp;&middot;&nbsp; <a href="register.html">Register</a></p>
+        <p>Wasul &mdash; Bringing delivery to every home in Oman &nbsp;&middot;&nbsp; <a href="#faq">FAQ</a> &nbsp;&middot;&nbsp; <a href="#contact">Contact</a> &nbsp;&middot;&nbsp; <a href="register.html">Register</a></p>
     </footer>
 
 </body>
