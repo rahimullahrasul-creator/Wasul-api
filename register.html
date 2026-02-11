@@ -3,11 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register Your Address - Wasul</title>
+    <title>Register Your Address — Wasul</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Serif+Display&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <style>
+        :root {
+            --orange-500: #e8682a;
+            --orange-600: #d45a1f;
+            --orange-50: #fef5f0;
+            --sand-100: #f9f6f2;
+            --sand-200: #f0ebe3;
+            --charcoal: #1a1a1a;
+            --slate: #4a4a4a;
+            --muted: #7a7a7a;
+            --white: #ffffff;
+            --green-500: #16a34a;
+            --green-50: #f0fdf4;
+            --red-500: #dc2626;
+            --red-50: #fef2f2;
+            --radius: 12px;
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -15,73 +33,196 @@
         }
 
         body {
-            font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #ff9a56 0%, #ff6b6b 100%);
+            font-family: 'DM Sans', sans-serif;
+            color: var(--charcoal);
+            background: var(--sand-100);
+            -webkit-font-smoothing: antialiased;
             min-height: 100vh;
+        }
+
+        /* NAV */
+        nav {
+            padding: 20px 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: var(--white);
+            border-bottom: 1px solid rgba(0,0,0,0.04);
+        }
+
+        .nav-logo {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.6rem;
+            color: var(--orange-500);
+            text-decoration: none;
+            letter-spacing: -0.5px;
+        }
+
+        .nav-back {
+            text-decoration: none;
+            color: var(--slate);
+            font-size: 0.9rem;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: color 0.2s;
+        }
+
+        .nav-back:hover {
+            color: var(--orange-500);
+        }
+
+        /* LAYOUT */
+        .page-layout {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 48px 40px 80px;
+            display: grid;
+            grid-template-columns: 340px 1fr;
+            gap: 48px;
+            align-items: start;
+        }
+
+        /* LEFT SIDEBAR */
+        .sidebar {
+            position: sticky;
+            top: 32px;
+        }
+
+        .sidebar h1 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 2rem;
+            letter-spacing: -0.5px;
+            line-height: 1.2;
+            margin-bottom: 12px;
+        }
+
+        .sidebar h1 span {
+            color: var(--orange-500);
+        }
+
+        .sidebar > p {
+            color: var(--slate);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 36px;
+        }
+
+        .info-card {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 16px;
+        }
+
+        .info-card h4 {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--muted);
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            margin-bottom: 12px;
+            font-size: 0.88rem;
+            color: var(--slate);
+            line-height: 1.4;
+        }
+
+        .info-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .info-icon {
+            width: 20px;
+            height: 20px;
+            border-radius: 5px;
+            background: var(--orange-50);
+            color: var(--orange-500);
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 20px;
-        }
-
-        .container {
-            background: white;
-            border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-            max-width: 700px;
-            width: 100%;
-            padding: 50px;
-        }
-
-        .logo {
-            text-align: center;
-            margin-bottom: 40px;
-            margin-top: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .logo h1 {
-            color: #c8102e;
-            font-size: 3.5em;
-            margin-bottom: 5px;
-            margin-top: 0;
+            flex-shrink: 0;
+            font-size: 0.7rem;
             font-weight: 700;
-            letter-spacing: -1px;
+            margin-top: 1px;
         }
 
-        .logo p {
-            color: #666;
-            font-size: 1.1em;
-            font-weight: 400;
-            margin-top: 0;
+        /* FORM CARD */
+        .form-card {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 40px;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+        }
+
+        .form-title {
+            font-size: 1.15rem;
+            font-weight: 700;
+            margin-bottom: 32px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--sand-200);
+        }
+
+        .form-section {
+            margin-bottom: 28px;
+        }
+
+        .form-section-label {
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--muted);
+            font-weight: 600;
+            margin-bottom: 16px;
         }
 
         .form-group {
-            margin-bottom: 25px;
+            margin-bottom: 20px;
+        }
+
+        .form-group:last-child {
+            margin-bottom: 0;
         }
 
         label {
             display: block;
-            color: #333;
+            color: var(--charcoal);
             font-weight: 600;
-            margin-bottom: 8px;
-            font-size: 0.9em;
+            margin-bottom: 6px;
+            font-size: 0.88rem;
         }
 
-        input, textarea {
+        label .required {
+            color: var(--orange-500);
+        }
+
+        input, textarea, select {
             width: 100%;
-            padding: 12px;
-            border: 2px solid #e1e1e1;
-            border-radius: 8px;
-            font-size: 1em;
-            transition: border-color 0.3s;
+            padding: 12px 16px;
+            border: 1.5px solid var(--sand-200);
+            border-radius: 10px;
+            font-size: 0.95rem;
+            font-family: 'DM Sans', sans-serif;
+            color: var(--charcoal);
+            background: var(--white);
+            transition: border-color 0.2s, box-shadow 0.2s;
         }
 
-        input:focus, textarea:focus {
+        input:focus, textarea:focus, select:focus {
             outline: none;
-            border-color: #ff9a56;
+            border-color: var(--orange-500);
+            box-shadow: 0 0 0 3px rgba(232, 104, 42, 0.1);
+        }
+
+        input::placeholder, textarea::placeholder {
+            color: #b0b0b0;
         }
 
         textarea {
@@ -89,248 +230,460 @@
             min-height: 80px;
         }
 
-        .map-picker {
-            margin-bottom: 25px;
-        }
-
-        #map {
-            height: 300px;
-            border-radius: 8px;
-            border: 2px solid #e1e1e1;
-            margin-top: 10px;
+        select {
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%237a7a7a' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 16px center;
+            padding-right: 40px;
+            cursor: pointer;
         }
 
         .helper-text {
-            font-size: 0.85em;
-            color: #666;
+            font-size: 0.78rem;
+            color: var(--muted);
             margin-top: 5px;
         }
 
-        button {
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        /* MAP */
+        .map-container {
+            margin-bottom: 20px;
+        }
+
+        #map {
+            height: 280px;
+            border-radius: 12px;
+            border: 1.5px solid var(--sand-200);
+            z-index: 1;
+        }
+
+        .location-btn {
             width: 100%;
-            padding: 15px;
-            background: linear-gradient(135deg, #ff9a56 0%, #ff6b6b 100%);
-            color: white;
+            padding: 12px;
+            background: var(--charcoal);
+            color: var(--white);
             border: none;
-            border-radius: 8px;
-            font-size: 1.1em;
-            font-weight: 600;
+            border-radius: 10px;
             cursor: pointer;
-            transition: transform 0.2s, box-shadow 0.2s;
+            font-size: 0.88rem;
+            font-weight: 600;
+            font-family: 'DM Sans', sans-serif;
+            margin-bottom: 12px;
+            transition: background 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
         }
 
-        button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 20px rgba(255, 154, 86, 0.4);
+        .location-btn:hover {
+            background: #333;
         }
 
-        button:disabled {
-            opacity: 0.6;
+        .location-btn svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        .coords-display {
+            display: flex;
+            gap: 12px;
+        }
+
+        .coord-badge {
+            flex: 1;
+            background: var(--sand-100);
+            padding: 8px 12px;
+            border-radius: 8px;
+            font-size: 0.78rem;
+            color: var(--muted);
+            text-align: center;
+            font-weight: 500;
+        }
+
+        .coord-badge.active {
+            color: var(--green-500);
+            background: var(--green-50);
+        }
+
+        /* SUBMIT */
+        .submit-btn {
+            width: 100%;
+            padding: 16px;
+            background: var(--orange-500);
+            color: var(--white);
+            border: none;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: 700;
+            font-family: 'DM Sans', sans-serif;
+            cursor: pointer;
+            transition: all 0.2s;
+            margin-top: 8px;
+        }
+
+        .submit-btn:hover {
+            background: var(--orange-600);
+            transform: translateY(-1px);
+            box-shadow: 0 8px 24px rgba(232, 104, 42, 0.3);
+        }
+
+        .submit-btn:disabled {
+            opacity: 0.5;
             cursor: not-allowed;
             transform: none;
+            box-shadow: none;
         }
 
-        .success-message {
+        /* SUCCESS */
+        .success-overlay {
             display: none;
-            background: #10b981;
-            color: white;
-            padding: 20px;
-            border-radius: 8px;
-            margin-bottom: 20px;
             text-align: center;
+            padding: 48px 24px;
         }
 
-        .success-message h3 {
-            margin-bottom: 10px;
+        .success-overlay.visible {
+            display: block;
         }
 
-        .address-code {
-            font-size: 1.5em;
-            font-weight: bold;
-            background: rgba(255, 255, 255, 0.2);
-            padding: 10px;
-            border-radius: 5px;
-            margin: 10px 0;
+        .success-icon {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            background: var(--green-50);
+            color: var(--green-500);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            margin-bottom: 24px;
         }
 
-        .error-message {
-            display: none;
-            background: #ef4444;
-            color: white;
-            padding: 15px;
-            border-radius: 8px;
-            margin-bottom: 20px;
+        .success-overlay h2 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.6rem;
+            margin-bottom: 8px;
         }
 
-        .current-location-btn {
-            width: 100%;
-            padding: 10px;
-            background: #10b981;
-            color: white;
-            border: none;
-            border-radius: 8px;
+        .success-overlay > p {
+            color: var(--slate);
+            margin-bottom: 28px;
+            font-size: 0.95rem;
+        }
+
+        .code-display {
+            background: var(--charcoal);
+            color: var(--orange-500);
+            font-size: 2rem;
+            font-weight: 700;
+            letter-spacing: 3px;
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 12px;
+        }
+
+        .code-hint {
+            color: var(--muted);
+            font-size: 0.85rem;
+            margin-bottom: 32px;
+        }
+
+        .success-actions {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+        }
+
+        .success-btn {
+            padding: 12px 24px;
+            border-radius: 10px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            font-family: 'DM Sans', sans-serif;
             cursor: pointer;
-            margin-top: 10px;
-            font-size: 0.9em;
+            border: none;
+            transition: all 0.2s;
         }
 
-        .current-location-btn:hover {
-            background: #059669;
+        .success-btn.primary {
+            background: var(--orange-500);
+            color: var(--white);
         }
+
+        .success-btn.primary:hover {
+            background: var(--orange-600);
+        }
+
+        .success-btn.secondary {
+            background: var(--sand-100);
+            color: var(--slate);
+        }
+
+        .success-btn.secondary:hover {
+            background: var(--sand-200);
+        }
+
+        /* ERROR */
+        .error-banner {
+            display: none;
+            background: var(--red-50);
+            color: var(--red-500);
+            padding: 14px 16px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            font-size: 0.88rem;
+            font-weight: 500;
+            border: 1px solid rgba(220, 38, 38, 0.1);
+        }
+
+        .error-banner.visible {
+            display: block;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            nav {
+                padding: 16px 20px;
+            }
+
+            .page-layout {
+                grid-template-columns: 1fr;
+                padding: 24px 16px 60px;
+                gap: 24px;
+            }
+
+            .sidebar {
+                position: static;
+            }
+
+            .sidebar h1 {
+                font-size: 1.6rem;
+            }
+
+            .info-card {
+                display: none;
+            }
+
+            .form-card {
+                padding: 24px;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .success-actions {
+                flex-direction: column;
+            }
+        }
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(16px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .form-card { animation: fadeUp 0.5s ease-out; }
+        .sidebar { animation: fadeUp 0.5s ease-out 0.1s both; }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="logo">
-            <h1>Wasul</h1>
-            <p>Deliver to any home</p>
-        </div>
 
-        <div id="successMessage" class="success-message">
-            <h3>✅ Address Registered!</h3>
-            <p>Your unique address code:</p>
-            <div class="address-code" id="addressCode"></div>
-            <p>Use this code when ordering delivery</p>
-            <button onclick="location.reload()" style="margin-top: 15px; background: white; color: #10b981; padding: 12px 24px; border: none; border-radius: 8px; cursor: pointer; font-weight: bold; font-size: 1em;">📝 Register Another Address</button>
-        </div>
+    <nav>
+        <a href="index.html" class="nav-logo">Wasul</a>
+        <a href="index.html" class="nav-back">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10 12L6 8l4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Back to Home
+        </a>
+    </nav>
 
-        <div id="errorMessage" class="error-message"></div>
+    <div class="page-layout">
+        <aside class="sidebar">
+            <h1>Register your <span>home</span></h1>
+            <p>Add your location once and get a unique code you can use for every delivery, order, and service.</p>
 
-        <form id="registrationForm">
-            <div class="form-group">
-                <label for="phone">Phone Number *</label>
-                <input 
-                    type="tel" 
-                    id="phone" 
-                    name="phone" 
-                    placeholder="968 91234567" 
-                    required
-                />
-                <div class="helper-text">Include country code (968 for Oman)</div>
+            <div class="info-card">
+                <h4>What you'll need</h4>
+                <div class="info-item">
+                    <span class="info-icon">1</span>
+                    <span>Your phone number (with country code)</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-icon">2</span>
+                    <span>Your home's location on the map</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-icon">3</span>
+                    <span>Any helpful delivery instructions</span>
+                </div>
             </div>
 
-            <div class="map-picker">
-                <label>Select Your Location on Map *</label>
-                <button type="button" class="current-location-btn" onclick="getCurrentLocation()">
-                    📍 Use My Current Location
-                </button>
-                <div id="map"></div>
-                <div class="helper-text">Click on the map to mark your home location</div>
-                <input type="hidden" id="latitude" name="latitude" required>
-                <input type="hidden" id="longitude" name="longitude" required>
+            <div class="info-card">
+                <h4>Your data is safe</h4>
+                <div class="info-item">
+                    <span class="info-icon">&#10003;</span>
+                    <span>Location shared only with delivery partners at time of order</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-icon">&#10003;</span>
+                    <span>Phone number used for verification only</span>
+                </div>
             </div>
+        </aside>
 
-            <div class="form-group">
-                <label for="area">Area/Neighborhood</label>
-                <input 
-                    type="text" 
-                    id="area" 
-                    name="area" 
-                    placeholder="e.g., Al Khuwair, Qurum"
-                />
+        <main>
+            <div class="form-card">
+                <div id="successMessage" class="success-overlay">
+                    <div class="success-icon">&#10003;</div>
+                    <h2>You're registered</h2>
+                    <p>Here's your unique Wasul code. Save it and use it when ordering.</p>
+                    <div class="code-display" id="addressCode"></div>
+                    <div class="code-hint">Share this code with any delivery service</div>
+                    <div class="success-actions">
+                        <button class="success-btn primary" onclick="copyCode()">Copy Code</button>
+                        <button class="success-btn secondary" onclick="location.reload()">Register Another</button>
+                    </div>
+                </div>
+
+                <form id="registrationForm">
+                    <div class="form-title">Address Registration</div>
+
+                    <div id="errorMessage" class="error-banner"></div>
+
+                    <div class="form-section">
+                        <div class="form-section-label">Contact</div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number <span class="required">*</span></label>
+                            <input type="tel" id="phone" name="phone" placeholder="968 9123 4567" required />
+                            <div class="helper-text">Include Oman country code (968)</div>
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <div class="form-section-label">Location</div>
+                        <div class="map-container">
+                            <button type="button" class="location-btn" onclick="getCurrentLocation()">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v4m0 12v4M2 12h4m12 0h4"/></svg>
+                                Use My Current Location
+                            </button>
+                            <div id="map"></div>
+                            <div class="helper-text" style="margin-top: 8px;">Click the map to adjust your pin</div>
+                            <input type="hidden" id="latitude" name="latitude" required>
+                            <input type="hidden" id="longitude" name="longitude" required>
+                        </div>
+                        <div class="coords-display">
+                            <div class="coord-badge" id="latBadge">Latitude: --</div>
+                            <div class="coord-badge" id="lngBadge">Longitude: --</div>
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <div class="form-section-label">Details</div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="area">Area / Neighborhood</label>
+                                <input type="text" id="area" name="area" placeholder="e.g., Al Khuwair" />
+                            </div>
+                            <div class="form-group">
+                                <label for="city">City <span class="required">*</span></label>
+                                <select id="city" name="city" required>
+                                    <option value="Muscat">Muscat</option>
+                                    <option value="Salalah">Salalah</option>
+                                    <option value="Sohar">Sohar</option>
+                                    <option value="Nizwa">Nizwa</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="po_box">P.O. Box</label>
+                            <input type="text" id="po_box" name="po_box" placeholder="Optional" />
+                        </div>
+                        <div class="form-group">
+                            <label for="delivery_notes">Delivery Instructions</label>
+                            <textarea id="delivery_notes" name="delivery_notes" placeholder="e.g., White gate on the left, ring doorbell twice"></textarea>
+                            <div class="helper-text">Help drivers find your home easily</div>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="submit-btn" id="submitBtn">Register My Address</button>
+                </form>
             </div>
-
-            <div class="form-group">
-                <label for="city">City *</label>
-                <select id="city" name="city" required>
-                    <option value="Muscat">Muscat</option>
-                    <option value="Salalah">Salalah</option>
-                    <option value="Sohar">Sohar</option>
-                    <option value="Nizwa">Nizwa</option>
-                </select>
-            </div>
-
-            <div class="form-group">
-                <label for="po_box">P.O. Box (if you have one)</label>
-                <input 
-                    type="text" 
-                    id="po_box" 
-                    name="po_box" 
-                    placeholder="Optional"
-                />
-            </div>
-
-            <div class="form-group">
-                <label for="delivery_notes">Delivery Instructions</label>
-                <textarea 
-                    id="delivery_notes" 
-                    name="delivery_notes" 
-                    placeholder="e.g., White gate on the left, call when you arrive"
-                ></textarea>
-                <div class="helper-text">Help drivers find you easily</div>
-            </div>
-
-            <button type="submit" id="submitBtn">Register Address</button>
-        </form>
+        </main>
     </div>
 
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-
     <script>
-        // Initialize map (centered on Muscat)
+        // Map setup
         const map = L.map('map').setView([23.5880, 58.3829], 12);
-        
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: '© OpenStreetMap contributors'
+            attribution: '&copy; OpenStreetMap'
         }).addTo(map);
 
         let marker = null;
 
-        // Add click handler to map
-        map.on('click', function(e) {
-            const { lat, lng } = e.latlng;
-            
+        function setPin(lat, lng) {
             if (marker) {
                 marker.setLatLng([lat, lng]);
             } else {
                 marker = L.marker([lat, lng]).addTo(map);
             }
-            
             document.getElementById('latitude').value = lat.toFixed(6);
             document.getElementById('longitude').value = lng.toFixed(6);
-        });
 
-        // Get current location
-        function getCurrentLocation() {
-            if (navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition(
-                    (position) => {
-                        const lat = position.coords.latitude;
-                        const lng = position.coords.longitude;
-                        
-                        map.setView([lat, lng], 15);
-                        
-                        if (marker) {
-                            marker.setLatLng([lat, lng]);
-                        } else {
-                            marker = L.marker([lat, lng]).addTo(map);
-                        }
-                        
-                        document.getElementById('latitude').value = lat.toFixed(6);
-                        document.getElementById('longitude').value = lng.toFixed(6);
-                    },
-                    (error) => {
-                        showError('Could not get your location. Please select manually on the map.');
-                    }
-                );
-            } else {
-                showError('Geolocation is not supported by your browser');
-            }
+            const latBadge = document.getElementById('latBadge');
+            const lngBadge = document.getElementById('lngBadge');
+            latBadge.textContent = `Lat: ${lat.toFixed(4)}`;
+            lngBadge.textContent = `Lng: ${lng.toFixed(4)}`;
+            latBadge.classList.add('active');
+            lngBadge.classList.add('active');
         }
 
-        // Handle form submission
+        map.on('click', function(e) {
+            setPin(e.latlng.lat, e.latlng.lng);
+        });
+
+        function getCurrentLocation() {
+            if (!navigator.geolocation) {
+                showError('Geolocation is not supported by your browser.');
+                return;
+            }
+            navigator.geolocation.getCurrentPosition(
+                (pos) => {
+                    const lat = pos.coords.latitude;
+                    const lng = pos.coords.longitude;
+                    map.setView([lat, lng], 16);
+                    setPin(lat, lng);
+                },
+                () => showError('Could not detect your location. Please select it on the map.')
+            );
+        }
+
+        // Form submission
         document.getElementById('registrationForm').addEventListener('submit', async (e) => {
             e.preventDefault();
-            
-            const submitBtn = document.getElementById('submitBtn');
-            submitBtn.disabled = true;
-            submitBtn.textContent = 'Registering...';
-            
+
+            const lat = document.getElementById('latitude').value;
+            const lng = document.getElementById('longitude').value;
+
+            if (!lat || !lng) {
+                showError('Please select your home location on the map.');
+                return;
+            }
+
+            const btn = document.getElementById('submitBtn');
+            btn.disabled = true;
+            btn.textContent = 'Registering...';
+
             const formData = {
                 phone: document.getElementById('phone').value,
-                latitude: parseFloat(document.getElementById('latitude').value),
-                longitude: parseFloat(document.getElementById('longitude').value),
+                latitude: parseFloat(lat),
+                longitude: parseFloat(lng),
                 area: document.getElementById('area').value || null,
                 city: document.getElementById('city').value,
                 po_box: document.getElementById('po_box').value || null,
@@ -338,14 +691,10 @@
             };
 
             try {
-                // Update this URL to your actual API endpoint
                 const API_URL = 'https://oman-address-api.onrender.com';
-                
                 const response = await fetch(`${API_URL}/api/register-address`, {
                     method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
+                    headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(formData)
                 });
 
@@ -353,27 +702,35 @@
 
                 if (response.ok) {
                     document.getElementById('addressCode').textContent = data.address_code;
-                    document.getElementById('successMessage').style.display = 'block';
+                    document.getElementById('successMessage').classList.add('visible');
                     document.getElementById('registrationForm').style.display = 'none';
                 } else {
                     showError(data.detail || 'Registration failed. Please try again.');
                 }
             } catch (error) {
-                showError('Network error. Please check your connection and try again.');
+                showError('Network error. The server may be waking up — please try again in 30 seconds.');
             } finally {
-                submitBtn.disabled = false;
-                submitBtn.textContent = 'Register Address';
+                btn.disabled = false;
+                btn.textContent = 'Register My Address';
             }
         });
 
         function showError(message) {
-            const errorDiv = document.getElementById('errorMessage');
-            errorDiv.textContent = message;
-            errorDiv.style.display = 'block';
-            setTimeout(() => {
-                errorDiv.style.display = 'none';
-            }, 5000);
+            const el = document.getElementById('errorMessage');
+            el.textContent = message;
+            el.classList.add('visible');
+            setTimeout(() => el.classList.remove('visible'), 6000);
+        }
+
+        function copyCode() {
+            const code = document.getElementById('addressCode').textContent;
+            navigator.clipboard.writeText(code).then(() => {
+                const btn = event.target;
+                btn.textContent = 'Copied!';
+                setTimeout(() => btn.textContent = 'Copy Code', 2000);
+            });
         }
     </script>
+
 </body>
 </html>
