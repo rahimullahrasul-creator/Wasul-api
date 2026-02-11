@@ -1,6 +1,3 @@
-
----
-
 # Wasul API
 
 **Address registration and lookup for home delivery in Oman**
