@@ -437,7 +437,7 @@
                                 <label for="verifyCode">Verification Code</label>
                                 <div class="verify-row">
                                     <input type="text" id="verifyCode" placeholder="------" maxlength="6" inputmode="numeric" autocomplete="one-time-code" />
-                                    <button type="button" class="verify-btn" id="verifyBtn" onclick="verifyCode()">Verify</button>
+                                    <button type="button" class="verify-btn" id="verifyBtn">Verify</button>
                                 </div>
                                 <div class="helper-text">Enter the 6-digit code sent to your phone</div>
                             </div>
@@ -649,6 +649,11 @@
         // Enter key submits verification code
         document.getElementById('verifyCode').addEventListener('keydown', function(e) {
             if (e.key === 'Enter') { e.preventDefault(); verifyCode(); }
+        });
+
+        // Verify button click
+        document.getElementById('verifyBtn').addEventListener('click', function() {
+            verifyCode();
         });
 
         // ============================================================
