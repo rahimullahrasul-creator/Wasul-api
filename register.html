@@ -25,13 +25,7 @@
             --red-50: #fef2f2;
             --radius: 12px;
         }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: 'DM Sans', sans-serif;
             color: var(--charcoal);
@@ -39,8 +33,6 @@
             -webkit-font-smoothing: antialiased;
             min-height: 100vh;
         }
-
-        /* NAV */
         nav {
             padding: 20px 40px;
             display: flex;
@@ -49,15 +41,13 @@
             background: var(--white);
             border-bottom: 1px solid rgba(0,0,0,0.04);
         }
-
         .nav-logo {
             font-family: 'DM Serif Display', serif;
-            font-size: 2.2rem;
+            font-size: 1.6rem;
             color: var(--orange-500);
             text-decoration: none;
             letter-spacing: -0.5px;
         }
-
         .nav-back {
             text-decoration: none;
             color: var(--slate);
@@ -68,12 +58,7 @@
             gap: 6px;
             transition: color 0.2s;
         }
-
-        .nav-back:hover {
-            color: var(--orange-500);
-        }
-
-        /* LAYOUT */
+        .nav-back:hover { color: var(--orange-500); }
         .page-layout {
             max-width: 1100px;
             margin: 0 auto;
@@ -83,13 +68,7 @@
             gap: 48px;
             align-items: start;
         }
-
-        /* LEFT SIDEBAR */
-        .sidebar {
-            position: sticky;
-            top: 32px;
-        }
-
+        .sidebar { position: sticky; top: 32px; }
         .sidebar h1 {
             font-family: 'DM Serif Display', serif;
             font-size: 2rem;
@@ -97,25 +76,19 @@
             line-height: 1.2;
             margin-bottom: 12px;
         }
-
-        .sidebar h1 span {
-            color: var(--orange-500);
-        }
-
+        .sidebar h1 span { color: var(--orange-500); }
         .sidebar > p {
             color: var(--slate);
             font-size: 0.95rem;
             line-height: 1.6;
             margin-bottom: 36px;
         }
-
         .info-card {
             background: var(--white);
             border-radius: 12px;
             padding: 24px;
             margin-bottom: 16px;
         }
-
         .info-card h4 {
             font-size: 0.75rem;
             text-transform: uppercase;
@@ -124,7 +97,6 @@
             margin-bottom: 12px;
             font-weight: 600;
         }
-
         .info-item {
             display: flex;
             align-items: flex-start;
@@ -134,11 +106,7 @@
             color: var(--slate);
             line-height: 1.4;
         }
-
-        .info-item:last-child {
-            margin-bottom: 0;
-        }
-
+        .info-item:last-child { margin-bottom: 0; }
         .info-icon {
             width: 20px;
             height: 20px;
@@ -153,15 +121,12 @@
             font-weight: 700;
             margin-top: 1px;
         }
-
-        /* FORM CARD */
         .form-card {
             background: var(--white);
             border-radius: 16px;
             padding: 40px;
             box-shadow: 0 1px 4px rgba(0,0,0,0.04);
         }
-
         .form-title {
             font-size: 1.15rem;
             font-weight: 700;
@@ -169,11 +134,7 @@
             padding-bottom: 20px;
             border-bottom: 1px solid var(--sand-200);
         }
-
-        .form-section {
-            margin-bottom: 28px;
-        }
-
+        .form-section { margin-bottom: 28px; }
         .form-section-label {
             font-size: 0.72rem;
             text-transform: uppercase;
@@ -182,15 +143,8 @@
             font-weight: 600;
             margin-bottom: 16px;
         }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        .form-group:last-child {
-            margin-bottom: 0;
-        }
-
+        .form-group { margin-bottom: 20px; }
+        .form-group:last-child { margin-bottom: 0; }
         label {
             display: block;
             color: var(--charcoal);
@@ -198,11 +152,7 @@
             margin-bottom: 6px;
             font-size: 0.88rem;
         }
-
-        label .required {
-            color: var(--orange-500);
-        }
-
+        label .required { color: var(--orange-500); }
         input, textarea, select {
             width: 100%;
             padding: 12px 16px;
@@ -214,22 +164,13 @@
             background: var(--white);
             transition: border-color 0.2s, box-shadow 0.2s;
         }
-
         input:focus, textarea:focus, select:focus {
             outline: none;
             border-color: var(--orange-500);
             box-shadow: 0 0 0 3px rgba(232, 104, 42, 0.1);
         }
-
-        input::placeholder, textarea::placeholder {
-            color: #b0b0b0;
-        }
-
-        textarea {
-            resize: vertical;
-            min-height: 80px;
-        }
-
+        input::placeholder, textarea::placeholder { color: #b0b0b0; }
+        textarea { resize: vertical; min-height: 80px; }
         select {
             appearance: none;
             background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%237a7a7a' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");
@@ -238,31 +179,58 @@
             padding-right: 40px;
             cursor: pointer;
         }
+        .helper-text { font-size: 0.78rem; color: var(--muted); margin-top: 5px; }
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
 
-        .helper-text {
-            font-size: 0.78rem;
-            color: var(--muted);
-            margin-top: 5px;
+        /* PHONE VERIFY */
+        .phone-input-row { display: flex; gap: 12px; }
+        .phone-input-row input { flex: 1; }
+        .send-code-btn, .verify-btn {
+            padding: 12px 20px;
+            background: var(--charcoal);
+            color: var(--white);
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 0.88rem;
+            font-weight: 600;
+            font-family: 'DM Sans', sans-serif;
+            transition: background 0.2s;
+            white-space: nowrap;
         }
-
-        .form-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 16px;
+        .send-code-btn:hover, .verify-btn:hover { background: #333; }
+        .send-code-btn:disabled, .verify-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+        .verify-row { display: flex; gap: 12px; margin-top: 16px; }
+        .verify-row input {
+            flex: 1;
+            letter-spacing: 6px;
+            text-align: center;
+            font-size: 1.2rem;
+            font-weight: 700;
         }
+        .phone-verified-badge {
+            display: none;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 16px;
+            background: var(--green-50);
+            color: var(--green-500);
+            border-radius: 10px;
+            font-size: 0.88rem;
+            font-weight: 600;
+            margin-top: 12px;
+        }
+        .phone-verified-badge.visible { display: flex; }
+        .phone-verified-badge svg { width: 18px; height: 18px; flex-shrink: 0; }
+        #verifyStep { display: none; }
+        #verifyStep.visible { display: block; }
+        .requires-verification { display: none; }
+        .requires-verification.unlocked { display: block; animation: fadeUp 0.4s ease-out; }
+        #recaptcha-container { margin-top: 12px; }
 
         /* MAP */
-        .map-container {
-            margin-bottom: 20px;
-        }
-
-        #map {
-            height: 280px;
-            border-radius: 12px;
-            border: 1.5px solid var(--sand-200);
-            z-index: 1;
-        }
-
+        .map-container { margin-bottom: 20px; }
+        #map { height: 280px; border-radius: 12px; border: 1.5px solid var(--sand-200); z-index: 1; }
         .location-btn {
             width: 100%;
             padding: 12px;
@@ -281,21 +249,9 @@
             justify-content: center;
             gap: 8px;
         }
-
-        .location-btn:hover {
-            background: #333;
-        }
-
-        .location-btn svg {
-            width: 16px;
-            height: 16px;
-        }
-
-        .coords-display {
-            display: flex;
-            gap: 12px;
-        }
-
+        .location-btn:hover { background: #333; }
+        .location-btn svg { width: 16px; height: 16px; }
+        .coords-display { display: flex; gap: 12px; }
         .coord-badge {
             flex: 1;
             background: var(--sand-100);
@@ -306,11 +262,7 @@
             text-align: center;
             font-weight: 500;
         }
-
-        .coord-badge.active {
-            color: var(--green-500);
-            background: var(--green-50);
-        }
+        .coord-badge.active { color: var(--green-500); background: var(--green-50); }
 
         /* SUBMIT */
         .submit-btn {
@@ -327,168 +279,65 @@
             transition: all 0.2s;
             margin-top: 8px;
         }
-
-        .submit-btn:hover {
-            background: var(--orange-600);
-            transform: translateY(-1px);
-            box-shadow: 0 8px 24px rgba(232, 104, 42, 0.3);
-        }
-
-        .submit-btn:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-            transform: none;
-            box-shadow: none;
-        }
+        .submit-btn:hover { background: var(--orange-600); transform: translateY(-1px); box-shadow: 0 8px 24px rgba(232, 104, 42, 0.3); }
+        .submit-btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; box-shadow: none; }
 
         /* SUCCESS */
-        .success-overlay {
-            display: none;
-            text-align: center;
-            padding: 48px 24px;
-        }
-
-        .success-overlay.visible {
-            display: block;
-        }
-
+        .success-overlay { display: none; text-align: center; padding: 48px 24px; }
+        .success-overlay.visible { display: block; }
         .success-icon {
-            width: 64px;
-            height: 64px;
-            border-radius: 50%;
-            background: var(--green-50);
-            color: var(--green-500);
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.8rem;
-            margin-bottom: 24px;
+            width: 64px; height: 64px; border-radius: 50%;
+            background: var(--green-50); color: var(--green-500);
+            display: inline-flex; align-items: center; justify-content: center;
+            font-size: 1.8rem; margin-bottom: 24px;
         }
-
-        .success-overlay h2 {
-            font-family: 'DM Serif Display', serif;
-            font-size: 1.6rem;
-            margin-bottom: 8px;
-        }
-
-        .success-overlay > p {
-            color: var(--slate);
-            margin-bottom: 28px;
-            font-size: 0.95rem;
-        }
-
+        .success-overlay h2 { font-family: 'DM Serif Display', serif; font-size: 1.6rem; margin-bottom: 8px; }
+        .success-overlay > p { color: var(--slate); margin-bottom: 28px; font-size: 0.95rem; }
         .code-display {
-            background: var(--charcoal);
-            color: var(--orange-500);
-            font-size: 2rem;
-            font-weight: 700;
-            letter-spacing: 3px;
-            padding: 20px;
-            border-radius: 12px;
-            margin-bottom: 12px;
+            background: var(--charcoal); color: var(--orange-500);
+            font-size: 2rem; font-weight: 700; letter-spacing: 3px;
+            padding: 20px; border-radius: 12px; margin-bottom: 12px;
         }
-
-        .code-hint {
-            color: var(--muted);
-            font-size: 0.85rem;
-            margin-bottom: 32px;
-        }
-
-        .success-actions {
-            display: flex;
-            gap: 12px;
-            justify-content: center;
-        }
-
+        .code-hint { color: var(--muted); font-size: 0.85rem; margin-bottom: 32px; }
+        .success-actions { display: flex; gap: 12px; justify-content: center; }
         .success-btn {
-            padding: 12px 24px;
-            border-radius: 10px;
-            font-size: 0.9rem;
-            font-weight: 600;
-            font-family: 'DM Sans', sans-serif;
-            cursor: pointer;
-            border: none;
-            transition: all 0.2s;
+            padding: 12px 24px; border-radius: 10px; font-size: 0.9rem;
+            font-weight: 600; font-family: 'DM Sans', sans-serif;
+            cursor: pointer; border: none; transition: all 0.2s;
         }
-
-        .success-btn.primary {
-            background: var(--orange-500);
-            color: var(--white);
-        }
-
-        .success-btn.primary:hover {
-            background: var(--orange-600);
-        }
-
-        .success-btn.secondary {
-            background: var(--sand-100);
-            color: var(--slate);
-        }
-
-        .success-btn.secondary:hover {
-            background: var(--sand-200);
-        }
+        .success-btn.primary { background: var(--orange-500); color: var(--white); }
+        .success-btn.primary:hover { background: var(--orange-600); }
+        .success-btn.secondary { background: var(--sand-100); color: var(--slate); }
+        .success-btn.secondary:hover { background: var(--sand-200); }
 
         /* ERROR */
         .error-banner {
             display: none;
-            background: var(--red-50);
-            color: var(--red-500);
-            padding: 14px 16px;
-            border-radius: 10px;
-            margin-bottom: 20px;
-            font-size: 0.88rem;
-            font-weight: 500;
+            background: var(--red-50); color: var(--red-500);
+            padding: 14px 16px; border-radius: 10px; margin-bottom: 20px;
+            font-size: 0.88rem; font-weight: 500;
             border: 1px solid rgba(220, 38, 38, 0.1);
         }
-
-        .error-banner.visible {
-            display: block;
-        }
+        .error-banner.visible { display: block; }
 
         /* RESPONSIVE */
         @media (max-width: 768px) {
-            nav {
-                padding: 16px 20px;
-            }
-
-            .page-layout {
-                grid-template-columns: 1fr;
-                padding: 24px 16px 60px;
-                gap: 24px;
-            }
-
-            .sidebar {
-                position: static;
-            }
-
-            .sidebar h1 {
-                font-size: 1.6rem;
-            }
-
-            .info-card {
-                display: none;
-            }
-
-            .form-card {
-                padding: 24px;
-            }
-
-            .form-row {
-                grid-template-columns: 1fr;
-                gap: 20px;
-            }
-
-            .success-actions {
-                flex-direction: column;
-            }
+            nav { padding: 16px 20px; }
+            .page-layout { grid-template-columns: 1fr; padding: 24px 16px 60px; gap: 24px; }
+            .sidebar { position: static; }
+            .sidebar h1 { font-size: 1.6rem; }
+            .info-card { display: none; }
+            .form-card { padding: 24px; }
+            .form-row { grid-template-columns: 1fr; gap: 20px; }
+            .success-actions { flex-direction: column; }
+            .phone-input-row { flex-direction: column; }
+            .verify-row { flex-direction: column; }
         }
 
         @keyframes fadeUp {
             from { opacity: 0; transform: translateY(16px); }
             to { opacity: 1; transform: translateY(0); }
         }
-
         .form-card { animation: fadeUp 0.5s ease-out; }
         .sidebar { animation: fadeUp 0.5s ease-out 0.1s both; }
     </style>
@@ -507,12 +356,11 @@
         <aside class="sidebar">
             <h1>Register your <span>home</span></h1>
             <p>Add your location once and get a unique code you can use for every delivery, order, and service.</p>
-
             <div class="info-card">
                 <h4>What you'll need</h4>
                 <div class="info-item">
                     <span class="info-icon">1</span>
-                    <span>Your phone number (with country code)</span>
+                    <span>Your phone number for SMS verification</span>
                 </div>
                 <div class="info-item">
                     <span class="info-icon">2</span>
@@ -523,7 +371,6 @@
                     <span>Any helpful delivery instructions</span>
                 </div>
             </div>
-
             <div class="info-card">
                 <h4>Your data is safe</h4>
                 <div class="info-item">
@@ -532,7 +379,7 @@
                 </div>
                 <div class="info-item">
                     <span class="info-icon">&#10003;</span>
-                    <span>Phone number used for verification only</span>
+                    <span>Phone verified via SMS to prevent fraud</span>
                 </div>
             </div>
         </aside>
@@ -553,19 +400,38 @@
 
                 <form id="registrationForm">
                     <div class="form-title">Address Registration</div>
-
                     <div id="errorMessage" class="error-banner"></div>
 
-                    <div class="form-section">
-                        <div class="form-section-label">Contact</div>
+                    <!-- STEP 1: Phone Verification -->
+                    <div class="form-section" id="phoneStep">
+                        <div class="form-section-label">Verify Your Phone</div>
                         <div class="form-group">
                             <label for="phone">Phone Number <span class="required">*</span></label>
-                            <input type="tel" id="phone" name="phone" placeholder="968 9123 4567" required />
-                            <div class="helper-text">Include Oman country code (968)</div>
+                            <div class="phone-input-row">
+                                <input type="tel" id="phone" name="phone" placeholder="+968 9123 4567" required />
+                                <button type="button" class="send-code-btn" id="sendCodeBtn" onclick="sendVerificationCode()">Send Code</button>
+                            </div>
+                            <div class="helper-text">Include country code (e.g., +968 for Oman)</div>
+                        </div>
+                        <div id="recaptcha-container"></div>
+                        <div id="verifyStep">
+                            <div class="form-group">
+                                <label for="verifyCode">Verification Code</label>
+                                <div class="verify-row">
+                                    <input type="text" id="verifyCode" placeholder="------" maxlength="6" inputmode="numeric" autocomplete="one-time-code" />
+                                    <button type="button" class="verify-btn" id="verifyBtn" onclick="verifyCode()">Verify</button>
+                                </div>
+                                <div class="helper-text">Enter the 6-digit code sent to your phone</div>
+                            </div>
+                        </div>
+                        <div class="phone-verified-badge" id="verifiedBadge">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                            <span>Phone number verified</span>
                         </div>
                     </div>
 
-                    <div class="form-section">
+                    <!-- STEP 2: Location (hidden until verified) -->
+                    <div class="form-section requires-verification" id="locationSection">
                         <div class="form-section-label">Location</div>
                         <div class="map-container">
                             <button type="button" class="location-btn" onclick="getCurrentLocation()">
@@ -583,7 +449,8 @@
                         </div>
                     </div>
 
-                    <div class="form-section">
+                    <!-- STEP 3: Details (hidden until verified) -->
+                    <div class="form-section requires-verification" id="detailsSection">
                         <div class="form-section-label">Details</div>
                         <div class="form-row">
                             <div class="form-group">
@@ -611,15 +478,154 @@
                         </div>
                     </div>
 
-                    <button type="submit" class="submit-btn" id="submitBtn">Register My Address</button>
+                    <div class="requires-verification" id="submitSection">
+                        <button type="submit" class="submit-btn" id="submitBtn">Register My Address</button>
+                    </div>
                 </form>
             </div>
         </main>
     </div>
 
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-auth-compat.js"></script>
+    <!-- Leaflet Maps -->
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
     <script>
-        // Map setup
+        // ============================================================
+        // FIREBASE
+        // ============================================================
+        firebase.initializeApp({
+            apiKey: "AIzaSyAa8A8koGwbB4KbAHKxC-rsPj1a0NgOk_M",
+            authDomain: "wasul-bbd8b.firebaseapp.com",
+            projectId: "wasul-bbd8b",
+            storageBucket: "wasul-bbd8b.firebasestorage.app",
+            messagingSenderId: "569668748354",
+            appId: "1:569668748354:web:51d2bc5e38c5f593c699db",
+            measurementId: "G-1LCPY8WB20"
+        });
+
+        const auth = firebase.auth();
+        let confirmationResult = null;
+        let phoneVerified = false;
+
+        // Invisible reCAPTCHA
+        window.onload = function () {
+            window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container', {
+                'size': 'invisible',
+                'callback': () => {}
+            });
+            recaptchaVerifier.render();
+        };
+
+        // ============================================================
+        // PHONE VERIFICATION
+        // ============================================================
+        async function sendVerificationCode() {
+            const phoneInput = document.getElementById('phone');
+            let phoneNumber = phoneInput.value.trim();
+
+            if (!phoneNumber) {
+                showError('Please enter your phone number.');
+                return;
+            }
+
+            // Ensure + prefix, strip spaces
+            phoneNumber = phoneNumber.replace(/\s/g, '');
+            if (!phoneNumber.startsWith('+')) phoneNumber = '+' + phoneNumber;
+
+            const btn = document.getElementById('sendCodeBtn');
+            btn.disabled = true;
+            btn.textContent = 'Sending...';
+
+            try {
+                confirmationResult = await auth.signInWithPhoneNumber(phoneNumber, window.recaptchaVerifier);
+                document.getElementById('verifyStep').classList.add('visible');
+                document.getElementById('verifyCode').focus();
+                btn.textContent = 'Resend';
+                btn.disabled = false;
+            } catch (error) {
+                console.error('SMS Error:', error);
+                let msg = 'Could not send verification code. ';
+                if (error.code === 'auth/invalid-phone-number') {
+                    msg += 'Check the format (e.g., +96891234567).';
+                } else if (error.code === 'auth/too-many-requests') {
+                    msg += 'Too many attempts. Wait a few minutes.';
+                } else if (error.code === 'auth/captcha-check-failed') {
+                    msg += 'Security check failed. Refresh and try again.';
+                } else {
+                    msg += error.message || 'Please try again.';
+                }
+                showError(msg);
+                btn.textContent = 'Send Code';
+                btn.disabled = false;
+
+                // Reset reCAPTCHA
+                if (window.recaptchaVerifier) {
+                    try {
+                        window.recaptchaVerifier.render().then(id => grecaptcha.reset(id));
+                    } catch (e) {}
+                }
+            }
+        }
+
+        async function verifyCode() {
+            const code = document.getElementById('verifyCode').value.trim();
+            if (!code || code.length !== 6) {
+                showError('Please enter the 6-digit code.');
+                return;
+            }
+
+            const btn = document.getElementById('verifyBtn');
+            btn.disabled = true;
+            btn.textContent = 'Verifying...';
+
+            try {
+                await confirmationResult.confirm(code);
+                phoneVerified = true;
+
+                // Show verified badge
+                document.getElementById('verifiedBadge').classList.add('visible');
+                document.getElementById('verifyStep').style.display = 'none';
+
+                // Lock phone input
+                document.getElementById('phone').readOnly = true;
+                document.getElementById('phone').style.background = 'var(--sand-100)';
+                document.getElementById('sendCodeBtn').style.display = 'none';
+
+                // Unlock form sections
+                document.querySelectorAll('.requires-verification').forEach(el => {
+                    el.classList.add('unlocked');
+                });
+
+                // Fix map rendering after unhide
+                setTimeout(() => map.invalidateSize(), 100);
+
+            } catch (error) {
+                console.error('Verify Error:', error);
+                let msg = 'Verification failed. ';
+                if (error.code === 'auth/invalid-verification-code') {
+                    msg += 'Incorrect code.';
+                } else if (error.code === 'auth/code-expired') {
+                    msg += 'Code expired. Request a new one.';
+                } else {
+                    msg += 'Check the code and try again.';
+                }
+                showError(msg);
+                btn.textContent = 'Verify';
+                btn.disabled = false;
+            }
+        }
+
+        // Enter key submits verification code
+        document.getElementById('verifyCode').addEventListener('keydown', function(e) {
+            if (e.key === 'Enter') { e.preventDefault(); verifyCode(); }
+        });
+
+        // ============================================================
+        // MAP
+        // ============================================================
         const map = L.map('map').setView([23.5880, 58.3829], 12);
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             attribution: '&copy; OpenStreetMap'
@@ -628,60 +634,49 @@
         let marker = null;
 
         function setPin(lat, lng) {
-            if (marker) {
-                marker.setLatLng([lat, lng]);
-            } else {
-                marker = L.marker([lat, lng]).addTo(map);
-            }
+            if (marker) marker.setLatLng([lat, lng]);
+            else marker = L.marker([lat, lng]).addTo(map);
             document.getElementById('latitude').value = lat.toFixed(6);
             document.getElementById('longitude').value = lng.toFixed(6);
-
-            const latBadge = document.getElementById('latBadge');
-            const lngBadge = document.getElementById('lngBadge');
-            latBadge.textContent = `Lat: ${lat.toFixed(4)}`;
-            lngBadge.textContent = `Lng: ${lng.toFixed(4)}`;
-            latBadge.classList.add('active');
-            lngBadge.classList.add('active');
+            const latB = document.getElementById('latBadge');
+            const lngB = document.getElementById('lngBadge');
+            latB.textContent = `Lat: ${lat.toFixed(4)}`;
+            lngB.textContent = `Lng: ${lng.toFixed(4)}`;
+            latB.classList.add('active');
+            lngB.classList.add('active');
         }
 
-        map.on('click', function(e) {
-            setPin(e.latlng.lat, e.latlng.lng);
-        });
+        map.on('click', e => setPin(e.latlng.lat, e.latlng.lng));
 
         function getCurrentLocation() {
-            if (!navigator.geolocation) {
-                showError('Geolocation is not supported by your browser.');
-                return;
-            }
+            if (!navigator.geolocation) { showError('Geolocation not supported.'); return; }
             navigator.geolocation.getCurrentPosition(
-                (pos) => {
-                    const lat = pos.coords.latitude;
-                    const lng = pos.coords.longitude;
-                    map.setView([lat, lng], 16);
-                    setPin(lat, lng);
-                },
-                () => showError('Could not detect your location. Please select it on the map.')
+                pos => { map.setView([pos.coords.latitude, pos.coords.longitude], 16); setPin(pos.coords.latitude, pos.coords.longitude); },
+                () => showError('Could not detect location. Select it on the map.')
             );
         }
 
-        // Form submission
+        // ============================================================
+        // FORM SUBMISSION
+        // ============================================================
         document.getElementById('registrationForm').addEventListener('submit', async (e) => {
             e.preventDefault();
 
+            if (!phoneVerified) { showError('Please verify your phone number first.'); return; }
+
             const lat = document.getElementById('latitude').value;
             const lng = document.getElementById('longitude').value;
-
-            if (!lat || !lng) {
-                showError('Please select your home location on the map.');
-                return;
-            }
+            if (!lat || !lng) { showError('Please select your home location on the map.'); return; }
 
             const btn = document.getElementById('submitBtn');
             btn.disabled = true;
             btn.textContent = 'Registering...';
 
+            let phone = document.getElementById('phone').value.trim().replace(/\s/g, '');
+            if (phone.startsWith('+')) phone = phone.substring(1);
+
             const formData = {
-                phone: document.getElementById('phone').value,
+                phone: phone,
                 latitude: parseFloat(lat),
                 longitude: parseFloat(lng),
                 area: document.getElementById('area').value || null,
@@ -691,15 +686,12 @@
             };
 
             try {
-                const API_URL = 'https://oman-address-api.onrender.com';
-                const response = await fetch(`${API_URL}/api/register-address`, {
+                const response = await fetch('https://oman-address-api.onrender.com/api/register-address', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(formData)
                 });
-
                 const data = await response.json();
-
                 if (response.ok) {
                     document.getElementById('addressCode').textContent = data.address_code;
                     document.getElementById('successMessage').classList.add('visible');
@@ -708,13 +700,16 @@
                     showError(data.detail || 'Registration failed. Please try again.');
                 }
             } catch (error) {
-                showError('Network error. The server may be waking up — please try again in 30 seconds.');
+                showError('Network error. The server may be waking up — try again in 30 seconds.');
             } finally {
                 btn.disabled = false;
                 btn.textContent = 'Register My Address';
             }
         });
 
+        // ============================================================
+        // HELPERS
+        // ============================================================
         function showError(message) {
             const el = document.getElementById('errorMessage');
             el.textContent = message;
@@ -731,6 +726,5 @@
             });
         }
     </script>
-
 </body>
 </html>
