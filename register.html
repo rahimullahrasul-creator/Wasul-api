@@ -238,8 +238,8 @@
         .phone-verified-badge svg { width: 18px; height: 18px; flex-shrink: 0; }
         #verifyStep { display: none; }
         #verifyStep.visible { display: block; }
-        .requires-verification { display: none; }
-        .requires-verification.unlocked { display: block; animation: fadeUp 0.4s ease-out; }
+        .requires-verification .submit-btn { opacity: 0.4; cursor: not-allowed; }
+        .requires-verification.unlocked .submit-btn { opacity: 1; cursor: pointer; }
         #recaptcha-container { margin-top: 12px; }
 
         /* MAP */
@@ -448,8 +448,8 @@
                         </div>
                     </div>
 
-                    <!-- STEP 2: Location (hidden until verified) -->
-                    <div class="form-section requires-verification" id="locationSection">
+                    <!-- STEP 2: Location -->
+                    <div class="form-section" id="locationSection">
                         <div class="form-section-label">Location</div>
                         <div class="map-container">
                             <button type="button" class="location-btn" onclick="getCurrentLocation()">
@@ -467,8 +467,8 @@
                         </div>
                     </div>
 
-                    <!-- STEP 3: Details (hidden until verified) -->
-                    <div class="form-section requires-verification" id="detailsSection">
+                    <!-- STEP 3: Details -->
+                    <div class="form-section" id="detailsSection">
                         <div class="form-section-label">Details</div>
                         <div class="form-row">
                             <div class="form-group">
@@ -497,7 +497,7 @@
                     </div>
 
                     <div class="requires-verification" id="submitSection">
-                        <button type="submit" class="submit-btn" id="submitBtn">Register My Address</button>
+                        <button type="submit" class="submit-btn" id="submitBtn" disabled>Verify your phone to register</button>
                     </div>
                 </form>
             </div>
@@ -621,6 +621,11 @@
                 document.querySelectorAll('.requires-verification').forEach(el => {
                     el.classList.add('unlocked');
                 });
+
+                // Enable submit button
+                const submitBtn = document.getElementById('submitBtn');
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Register My Address';
 
                 // Fix map rendering after unhide
                 setTimeout(() => map.invalidateSize(), 100);
