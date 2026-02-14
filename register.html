@@ -644,6 +644,25 @@
                 document.getElementById('phone').style.background = 'var(--sand-100)';
                 document.getElementById('sendCodeBtn').style.display = 'none';
 
+                // Check if phone is already registered
+                const rawPhone = document.getElementById('phone').value.replace(/\D/g, '');
+                try {
+                    const checkResp = await fetch(`https://oman-address-api.onrender.com/api/check-phone?phone=968${rawPhone}`);
+                    const checkData = await checkResp.json();
+                    if (checkData.registered) {
+                        // Phone already registered — show existing code
+                        document.getElementById('addressCode').textContent = checkData.address_code;
+                        document.getElementById('successMessage').querySelector('h2').textContent = 'You\'re already registered';
+                        document.getElementById('successMessage').querySelector('p').textContent = 'This phone number already has a Wasul code. Here it is:';
+                        document.getElementById('successMessage').classList.add('visible');
+                        document.getElementById('registrationForm').style.display = 'none';
+                        return;
+                    }
+                } catch (e) {
+                    // If check fails, continue with registration normally
+                    console.log('Phone check failed, continuing with registration');
+                }
+
                 // Unlock form sections
                 document.querySelectorAll('.requires-verification').forEach(el => {
                     el.classList.add('unlocked');
