@@ -261,6 +261,8 @@
         .requires-verification.unlocked .submit-btn { opacity: 1; cursor: pointer; }
         #recaptcha-container { margin-top: 12px; }
 
+        [dir="rtl"] #phone { text-align: right; }
+
         /* MAP */
         .map-container { margin-bottom: 20px; }
         #map { height: 280px; border-radius: 12px; border: 1.5px solid var(--sand-200); z-index: 1; }
@@ -883,13 +885,13 @@ function applyTranslations(lang) {
         'nav-back-text': '#nav-back-text',
         'sidebar-h1': '.sidebar h1',
         'sidebar-p': '.sidebar > p',
-        'info-need-h4': '.info-card:nth-child(1) h4',
-        'info-need-1': '.info-card:nth-child(1) .info-item:nth-child(2) span:last-child',
-        'info-need-2': '.info-card:nth-child(1) .info-item:nth-child(3) span:last-child',
-        'info-need-3': '.info-card:nth-child(1) .info-item:nth-child(4) span:last-child',
-        'info-safe-h4': '.info-card:nth-child(2) h4',
-        'info-safe-1': '.info-card:nth-child(2) .info-item:nth-child(2) span:last-child',
-        'info-safe-2': '.info-card:nth-child(2) .info-item:nth-child(3) span:last-child',
+        'info-need-h4': '.sidebar .info-card:first-of-type h4',
+        'info-need-1': '.sidebar .info-card:first-of-type .info-item:nth-child(2) span:last-child',
+        'info-need-2': '.sidebar .info-card:first-of-type .info-item:nth-child(3) span:last-child',
+        'info-need-3': '.sidebar .info-card:first-of-type .info-item:nth-child(4) span:last-child',
+        'info-safe-h4': '.sidebar .info-card:last-of-type h4',
+        'info-safe-1': '.sidebar .info-card:last-of-type .info-item:nth-child(2) span:last-child',
+        'info-safe-2': '.sidebar .info-card:last-of-type .info-item:nth-child(3) span:last-child',
         'form-title': '.form-title',
         'phone-label': '#phoneStep .form-section-label',
         'phone-input-label': 'label[for="phone"]',
