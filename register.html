@@ -646,6 +646,7 @@
 
                 // Check if phone is already registered
                 const rawPhone = document.getElementById('phone').value.replace(/\D/g, '');
+                alert('Checking phone: 968' + rawPhone);
                 try {
                     const checkResp = await fetch(`https://oman-address-api.onrender.com/api/check-phone?phone=968${rawPhone}`);
                     const checkData = await checkResp.json();
