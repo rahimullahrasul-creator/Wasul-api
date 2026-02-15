@@ -825,14 +825,13 @@
 
         function copyCode() {
             const code = document.getElementById('addressCode').textContent;
-            navigator.clipboard.writeText(code).then(() => {
-                const btn = event.target;
-                btn.textContent = 'Copied!';
-                setTimeout(() => btn.textContent = 'Copy Code', 2000);
-            });
+            navigator.clipboard.writeText(code);
+            const btn = document.querySelector('.success-btn.primary');
+            btn.textContent = 'Code Copied!';
+            setTimeout(() => { btn.textContent = 'Copy Code'; }, 2000);
         }
 
-        // ============================================================
+// ============================================================
 // TRANSLATION
 // ============================================================
 function toggleLanguage() {
