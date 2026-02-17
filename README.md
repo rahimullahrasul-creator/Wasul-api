@@ -34,11 +34,9 @@ Request an API key for delivery partners. Required for lookup and verification e
 
 ## Live URLs
 
-- **Landing Page:** https://rahimullahrasul-creator.github.io/Wasul-api/
-- **Registration:** https://rahimullahrasul-creator.github.io/Wasul-api/register.html
-- **API:** https://oman-address-api.onrender.com
-- **API Documentation:** https://oman-address-api.onrender.com/docs
-- **Admin Dashboard:** https://oman-address-api.onrender.com/admin
+- Landing Page: https://rahimullahrasul-creator.github.io/Wasul-api/
+- Registration: https://rahimullahrasul-creator.github.io/Wasul-api/register.html
+- Partner Portal: https://rahimullahrasul-creator.github.io/Wasul-api/partner.html
 
 ---
 
