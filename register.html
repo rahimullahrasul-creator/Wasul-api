@@ -497,6 +497,10 @@
                     <!-- STEP 3: Details -->
                     <div class="form-section" id="detailsSection">
                         <div class="form-section-label">Details</div>
+                        <div class="form-group">
+                            <label for="fullname">Full Name <span class="required">*</span></label>
+                            <input type="text" id="fullname" name="fullname" placeholder="e.g., Ahmed Al-Rashidi" required />
+                        </div>
                         <div class="form-row">
                             <div class="form-group">
                                 <label for="area">Area / Neighborhood</label>
@@ -783,6 +787,7 @@
 
             const formData = {
                 phone: phone,
+                name: document.getElementById('fullname').value,
                 latitude: parseFloat(lat),
                 longitude: parseFloat(lng),
                 area: document.getElementById('area').value || null,
@@ -868,6 +873,7 @@ const regTranslations = {
         'verify-label': 'Verification Code',
         'verify-helper': 'Enter the 6-digit code sent to your phone',
         'verified-text': 'Phone number verified',
+        'fullname-label': 'Full Name <span class="required">*</span>',
         'location-label': 'Location',
         'location-btn': 'Use My Current Location',
         'location-helper': 'Click the map to adjust your pin',
@@ -905,6 +911,7 @@ const regTranslations = {
         'verify-label': 'رمز التحقق',
         'verify-helper': 'أدخل الرمز المكون من ٦ أرقام المرسل لهاتفك',
         'verified-text': 'تم التحقق من رقم الهاتف',
+        'fullname-label': 'الاسم الكامل <span class="required">*</span>',
         'location-label': 'الموقع',
         'location-btn': 'استخدم موقعي الحالي',
         'location-helper': 'انقر على الخريطة لتعديل الموقع',
@@ -945,6 +952,7 @@ function applyTranslations(lang) {
         'verify-label': 'label[for="verifyCode"]',
         'verify-helper': '#verifyStep .helper-text',
         'verified-text': '#verifiedBadge span',
+        'fullname-label': 'label[for="fullname"]',
         'location-label': '#locationSection .form-section-label',
         'location-btn': '.location-btn',
         'location-helper': '.map-container .helper-text',
