@@ -436,9 +436,8 @@
                     <p>This is your permanent Wasul code. Save it somewhere safe and share it when ordering delivery from a Wasul partner.</p>
                     <div class="code-display" id="addressCode"></div>
                     <div class="code-hint">This code is tied to your home location. Share it with any delivery service, restaurant, or shop.</div>
-                    <div class="success-actions">
+                    <div class="success-actions" style="justify-content:center">
                         <button class="success-btn primary" onclick="copyCode()">Copy Code</button>
-                        <button class="success-btn secondary" onclick="location.reload()">Register Another</button>
                     </div>
                     </div>
 
@@ -896,7 +895,6 @@ const regTranslations = {
         'success-p': 'This is your permanent Wasul code. Save it somewhere safe — you\'ll use it every time you order delivery.',
         'success-hint': 'This code is tied to your home location. Share it with any delivery service, restaurant, or shop.',
         'success-copy': 'Copy Code',
-        'success-another': 'Register Another',
     },
     ar: {
         'nav-back-text': 'العودة للرئيسية',
@@ -934,7 +932,6 @@ const regTranslations = {
         'success-p': 'هذا هو رمز وصول الدائم الخاص بك. احفظه في مكان آمن وشاركه عند طلب التوصيل من شريك وصول.',
         'success-hint': 'هذا الرمز مرتبط بموقع منزلك. شاركه مع أي خدمة توصيل أو مطعم أو متجر.',
         'success-copy': 'نسخ الرمز',
-        'success-another': 'تسجيل آخر',
     }
 };
 
@@ -975,7 +972,6 @@ function applyTranslations(lang) {
         'success-p': '.success-overlay > p',
         'success-hint': '.code-hint',
         'success-copy': '.success-btn.primary',
-        'success-another': '.success-btn.secondary',
     };
 
     for (const [key, selector] of Object.entries(map)) {
