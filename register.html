@@ -502,8 +502,8 @@
                         </div>
                         <div class="form-row">
                             <div class="form-group">
-                                <label for="area">Area / Neighborhood</label>
-                                <input type="text" id="area" name="area" placeholder="e.g., Al Khuwair" />
+                                <label for="area">Area / Neighborhood <span class="required">*</span></label>
+                                <input type="text" id="area" name="area" placeholder="e.g., Al Khuwair" required />
                             </div>
                             <div class="form-group">
                                 <label for="city">City <span class="required">*</span></label>
@@ -520,8 +520,8 @@
                             <input type="text" id="po_box" name="po_box" placeholder="Optional" />
                         </div>
                         <div class="form-group">
-                            <label for="delivery_notes">Delivery Instructions</label>
-                            <textarea id="delivery_notes" name="delivery_notes" placeholder="e.g., White gate on the left, ring doorbell twice"></textarea>
+                            <label for="delivery_notes">Delivery Instructions <span class="required">*</span></label>
+                            <textarea id="delivery_notes" name="delivery_notes" placeholder="e.g., White gate on the left, ring doorbell twice" required></textarea>
                             <div class="helper-text">Help drivers find your home easily</div>
                         </div>
                     </div>
@@ -919,10 +919,10 @@ const regTranslations = {
         'location-btn': 'استخدم موقعي الحالي',
         'location-helper': 'انقر على الخريطة لتعديل الموقع',
         'details-label': 'التفاصيل',
-        'area-label': 'المنطقة / الحي',
+        'area-label': 'المنطقة / الحي' <span class="required">*</span>',
         'city-label': 'المدينة <span class="required">*</span>',
         'pobox-label': 'صندوق البريد',
-        'notes-label': 'تعليمات التوصيل',
+        'notes-label': 'تعليمات التوصيل' <span class="required">*</span>',
         'notes-helper': 'ساعد السائقين في العثور على منزلك بسهولة',
         'submit-btn-locked': 'تحقق من هاتفك للتسجيل',
         'submit-btn-ready': 'سجّل عنواني',
